@@ -7,7 +7,7 @@ import Avatar from "../components/Avatar";
 import Button from "../components/Button";
 import { Checkbox } from "react-native-paper";
 
-export default function Profile() {
+export default function Profile({ navigation, route }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -35,6 +35,15 @@ export default function Profile() {
 
     loadProfile();
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.clear();
+      route.params.setIsOnboardingComplete(false);
+    } catch (error) {
+      console.error("Error clearing AsyncStorage data", error);
+    }
+  };
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -135,7 +144,9 @@ export default function Profile() {
         </View>
       </View>
       <View style={styles.footerButtons}>
-        <Button onPress={() => {}}>Log out</Button>
+        <Button variant="action" onPress={handleLogout}>
+          Log out
+        </Button>
 
         <View style={styles.changeButtons}>
           <Button variant="outline" onPress={() => {}}>

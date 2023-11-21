@@ -37,7 +37,11 @@ export default function App() {
       <Stack.Navigator>
         {isOnboardingCompleted ? (
           <>
-            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen
+              name="Profile"
+              component={Profile}
+              initialParams={{ setIsOnboardingComplete }}
+            />
             <Stack.Screen name="Home" component={Home} />
           </>
         ) : (
