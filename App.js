@@ -38,7 +38,11 @@ export default function App() {
       {isOnboardingCompleted ? (
         <Stack.Screen name="Profile" component={Profile} />
       ) : (
-        <Stack.Screen name="Onboarding" component={Onboarding} />
+        <Stack.Screen 
+          name="Onboarding" 
+          component={Onboarding} 
+          options={{ headerShown: false }} 
+        />
       )}
       </Stack.Navigator>
     </NavigationContainer>
