@@ -13,10 +13,22 @@ const Onboarding = ({ navigation, route }) => {
   const isFirstNameValid = validateName(firstName);
 
   const completeOnboarding = async () => {
-    if (isFirstNameValid && isEmailValid) {
+    if (!isFirstNameValid || !isEmailValid) {
+      return;
+    }
+
+    try {
+      const profile = {
+        firstName: firstName,
+        email: email,
+      };
+
+      await AsyncStorage.setItem("profile", JSON.stringify(profile));
       await AsyncStorage.setItem("onboardingStatus", "completed");
 
       route.params.setIsOnboardingComplete(true);
+    } catch (error) {
+      console.error("Error saving data to AsyncStorage", error);
     }
   };
 
