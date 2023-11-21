@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import Onboarding from "./screens/Onboarding";
 import Profile from "./screens/Profile";
+import Home from "./screens/Home";
 import SplashScreen from "./screens/SplashScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState, useEffect } from "react";
@@ -35,9 +36,17 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {isOnboardingCompleted ? (
-          <Stack.Screen name="Profile" component={Profile} />
+          <>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Profile" component={Profile} />
+          </>
         ) : (
-          <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
+          <Stack.Screen
+            name="Onboarding"
+            component={Onboarding}
+            options={{ headerShown: false }}
+            initialParams={{ setIsOnboardingComplete }}
+          />
         )}
       </Stack.Navigator>
     </NavigationContainer>

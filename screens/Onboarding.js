@@ -1,15 +1,24 @@
 import { Text, View, Image, StyleSheet, TextInput } from "react-native";
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import Constants from "expo-constants";
 import Button from "../components/Button";
 import { validateEmail, validateName } from "../utils";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Onboarding = () => {
+const Onboarding = ({ navigation, route }) => {
   const [firstName, onChangeFirstName] = useState("");
   const [email, onChangeEmail] = useState("");
 
   const isEmailValid = validateEmail(email);
   const isFirstNameValid = validateName(firstName);
+
+  const completeOnboarding = async () => {
+    if (isFirstNameValid && isEmailValid) {
+      await AsyncStorage.setItem("onboardingStatus", "completed");
+
+      route.params.setIsOnboardingComplete(true);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -38,12 +47,7 @@ const Onboarding = () => {
         </View>
       </View>
       <View style={styles.footer}>
-        <Button
-          disabled={!isFirstNameValid || !isEmailValid}
-          onPress={() => {
-            console.log("Next button pressed");
-          }}
-        >
+        <Button disabled={!isFirstNameValid || !isEmailValid} onPress={completeOnboarding}>
           Next
         </Button>
       </View>
