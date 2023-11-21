@@ -97,15 +97,12 @@ const styles = StyleSheet.create({
   inputStyle: {
     borderColor: "#EDEFEE",
     backgroundColor: "white",
-    // alignSelf: "stretch",
     height: 50,
-    // margin: 18,
     borderWidth: 1,
     padding: 10,
     fontSize: 20,
     borderRadius: 9,
     width: '100%',
-    // fontFamily: "Karla-Medium",
   },
   footer: {
     backgroundColor: '#EDEFEE',
