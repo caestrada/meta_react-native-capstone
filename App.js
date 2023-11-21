@@ -1,10 +1,10 @@
-import { NavigationContainer } from '@react-navigation/native';
-import Onboarding from './screens/Onboarding';
-import Profile from './screens/Profile';
-import SplashScreen from './screens/SplashScreen';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationContainer } from "@react-navigation/native";
+import Onboarding from "./screens/Onboarding";
+import Profile from "./screens/Profile";
+import SplashScreen from "./screens/SplashScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,9 +13,9 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    AsyncStorage.getItem('onboardingStatus')
+    AsyncStorage.getItem("onboardingStatus")
       .then((value) => {
-        if (value === 'completed') {
+        if (value === "completed") {
           setIsOnboardingComplete(true);
         }
       })
@@ -27,7 +27,6 @@ export default function App() {
       });
   }, []);
 
-
   if (isLoading) {
     return <SplashScreen />;
   }
@@ -35,15 +34,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      {isOnboardingCompleted ? (
-        <Stack.Screen name="Profile" component={Profile} />
-      ) : (
-        <Stack.Screen 
-          name="Onboarding" 
-          component={Onboarding} 
-          options={{ headerShown: false }} 
-        />
-      )}
+        {isOnboardingCompleted ? (
+          <Stack.Screen name="Profile" component={Profile} />
+        ) : (
+          <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

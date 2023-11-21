@@ -1,9 +1,8 @@
-import { Text, View, Image, StyleSheet, TextInput } from 'react-native'
-import React, { Component, useState } from 'react'
+import { Text, View, Image, StyleSheet, TextInput } from "react-native";
+import React, { Component, useState } from "react";
 import Constants from "expo-constants";
 import Button from "../components/Button";
 import { validateEmail, validateName } from "../utils";
-
 
 const Onboarding = () => {
   const [firstName, onChangeFirstName] = useState("");
@@ -15,29 +14,27 @@ const Onboarding = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('../assets/images/Logo.png')} style={styles.logo} />
+        <Image source={require("../assets/images/Logo.png")} style={styles.logo} />
       </View>
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>
-          Let us get to know you
-        </Text>
+        <Text style={styles.title}>Let us get to know you</Text>
         <View style={styles.inputContainer}>
           <TextInput
-              style={styles.inputStyle}
-              value={firstName}
-              onChangeText={onChangeFirstName}
-              placeholder={"First Name"}
-            />
+            style={styles.inputStyle}
+            value={firstName}
+            onChangeText={onChangeFirstName}
+            placeholder={"First Name"}
+          />
         </View>
         <View style={styles.inputContainer}>
           <TextInput
-              style={styles.inputStyle}
-              value={email}
-              onChangeText={onChangeEmail}
-              placeholder={"Email"}
-              keyboardType="email-address"
-              autoCapitalize='none'
-            />
+            style={styles.inputStyle}
+            value={email}
+            onChangeText={onChangeEmail}
+            placeholder={"Email"}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
         </View>
       </View>
       <View style={styles.footer}>
@@ -46,19 +43,19 @@ const Onboarding = () => {
           onPress={() => {
             console.log("Next button pressed");
           }}
-          >
+        >
           Next
         </Button>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'space-between',
+    backgroundColor: "white",
+    justifyContent: "space-between",
   },
   header: {
     paddingTop: Constants.statusBarHeight,
@@ -67,12 +64,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#EDEFEE",
     borderBottomWidth: 1,
-    borderBottomColor: '#CCC',
+    borderBottomColor: "#CCC",
   },
   contentContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 24,
     gap: 15,
   },
@@ -90,9 +87,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputContainer: {
-    width: '100%',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
+    width: "100%",
+    flexDirection: "column",
+    justifyContent: "flex-start",
   },
   inputStyle: {
     borderColor: "#EDEFEE",
@@ -102,15 +99,15 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 20,
     borderRadius: 9,
-    width: '100%',
+    width: "100%",
   },
   footer: {
-    backgroundColor: '#EDEFEE',
+    backgroundColor: "#EDEFEE",
     borderTopWidth: 1,
-    borderTopColor: '#CCC',
+    borderTopColor: "#CCC",
     paddingVertical: 30,
     paddingHorizontal: 80,
-  }
+  },
 });
 
 export default Onboarding;
