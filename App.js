@@ -3,13 +3,29 @@ import Onboarding from './screens/Onboarding';
 import Profile from './screens/Profile';
 import SplashScreen from './screens/SplashScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isOnboardingCompleted, setIsOnboardingComplete] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    AsyncStorage.getItem('onboardingStatus')
+      .then((value) => {
+        if (value === 'completed') {
+          setIsOnboardingComplete(true);
+        }
+      })
+      .finally(() => {
+        // Simulate a slow loading process on app startup.
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+      });
+  }, []);
 
 
   if (isLoading) {
