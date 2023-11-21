@@ -88,8 +88,13 @@ export default function Profile() {
       </View>
       <View style={styles.footerButtons}>
         <Button onPress={() => {}}>Log out</Button>
-        <Button onPress={() => {}}>Save changes</Button>
-        <Button onPress={() => {}}>Discard changes</Button>
+
+        <View style={styles.changeButtons}>
+          <Button variant="outline" onPress={() => {}}>
+            Discard changes
+          </Button>
+          <Button onPress={() => {}}>Save changes</Button>
+        </View>
       </View>
     </ScrollView>
   );
@@ -118,10 +123,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
   },
-
-  input: {
-    // height: 40,
-    // margin: 12,
-    // borderWidth: 1,
+  changeButtons: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 30,
   },
 });
