@@ -51,7 +51,6 @@ export default function Profile() {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Personal information</Text>
-
       <View style={styles.avatarSection}>
         <Avatar imageUri={imageUri} firstName={firstName} lastName={lastName} />
         <View style={styles.avatarSectionButtons}>
@@ -62,21 +61,29 @@ export default function Profile() {
         </View>
       </View>
       <View style={styles.form}>
+        <Text style={styles.label}>First Name</Text>
         <TextInput
           placeholder="First name"
           value={firstName}
           onChangeText={setFirstName}
           style={styles.input}
         />
+
+        <Text style={styles.label}>Last Name</Text>
         <TextInput
           placeholder="Last name"
           value={lastName}
           onChangeText={setLastName}
           style={styles.input}
         />
+
+        <Text style={styles.label}>Email</Text>
         <TextInput placeholder="Email" value={email} onChangeText={setEmail} style={styles.input} />
+
+        <Text style={styles.label}>Phone Number</Text>
         <MaskedTextInput
           mask="(999) 999-9999"
+          placeholder="Phone"
           value={phone}
           onChangeText={setPhone}
           style={styles.input}
@@ -122,6 +129,24 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     flexDirection: "row",
     gap: 20,
+  },
+  form: {
+    marginTop: 20,
+    marginBottom: 40,
+  },
+  label: {
+    fontSize: 12,
+    fontWeight: "bold",
+    color: "#495E57",
+    marginBottom: 2,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#495E57",
+    borderRadius: 5,
+    padding: 10,
+    marginTop: 5,
+    marginBottom: 10,
   },
   changeButtons: {
     flexDirection: "row",
