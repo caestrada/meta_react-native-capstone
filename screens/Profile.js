@@ -5,6 +5,7 @@ import { MaskedTextInput } from "react-native-mask-text";
 import * as ImagePicker from "expo-image-picker";
 import Avatar from "../components/Avatar";
 import Button from "../components/Button";
+import { Checkbox } from "react-native-paper";
 
 export default function Profile() {
   const [firstName, setFirstName] = useState("");
@@ -90,8 +91,48 @@ export default function Profile() {
         />
       </View>
       <View style={styles.notifications}>
-        <Text>Email notifications</Text>
-        {/* Add CheckBox components and labels here */}
+        <Text style={styles.title}>Email notifications</Text>
+
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            status={orderStatuses ? "checked" : "unchecked"}
+            onPress={() => {
+              setOrderStatuses(!orderStatuses);
+            }}
+          />
+          <Text style={styles.label}>Order Statuses</Text>
+        </View>
+
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            status={passwordChanges ? "checked" : "unchecked"}
+            onPress={() => {
+              setPasswordChanges(!passwordChanges);
+            }}
+          />
+          <Text style={styles.label}>Password Changes</Text>
+        </View>
+
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            status={specialOffers ? "checked" : "unchecked"}
+            onPress={() => {
+              setSpecialOffers(!specialOffers);
+            }}
+          />
+          <Text style={styles.label}>Special Offers</Text>
+        </View>
+
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            color="#495E57"
+            status={newsletter ? "checked" : "unchecked"}
+            onPress={() => {
+              setNewsletter(!newsletter);
+            }}
+          />
+          <Text style={styles.label}>Newsletter</Text>
+        </View>
       </View>
       <View style={styles.footerButtons}>
         <Button onPress={() => {}}>Log out</Button>
@@ -148,9 +189,15 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 10,
   },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
   changeButtons: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 30,
+    marginTop: 20,
+    marginBottom: 100,
   },
 });
