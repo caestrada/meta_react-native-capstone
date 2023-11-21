@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { MaskedTextInput } from "react-native-mask-text";
 
 export default function Profile() {
   const [firstName, setFirstName] = useState("");
@@ -60,7 +61,12 @@ export default function Profile() {
           style={styles.input}
         />
         <TextInput placeholder="Email" value={email} onChangeText={setEmail} style={styles.input} />
-        {/* Repeat for last name, email, and phone */}
+        <MaskedTextInput
+          mask="(999) 999-9999"
+          value={phone}
+          onChangeText={setPhone}
+          style={styles.input}
+        />
       </View>
       <View style={styles.notifications}>
         <Text>Email notifications</Text>
@@ -91,5 +97,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 5,
     color: "#777",
+  },
+  input: {
+    // height: 40,
+    // margin: 12,
+    // borderWidth: 1,
   },
 });

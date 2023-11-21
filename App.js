@@ -37,8 +37,8 @@ export default function App() {
       <Stack.Navigator>
         {isOnboardingCompleted ? (
           <>
-            <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Home" component={Home} />
           </>
         ) : (
           <Stack.Screen
